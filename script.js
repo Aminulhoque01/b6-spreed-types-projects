@@ -13,12 +13,15 @@ let startTime;
 let questionText = "";
 
 // Load and display question
-fetch("./texts.json")
+
+  fetch("./texts.json")
   .then((res) => res.json())
   .then((data) => {
     questionText = data[Math.floor(Math.random() * data.length)];
+    // console.log(data);
     question.innerHTML = questionText;
   });
+
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
@@ -69,6 +72,7 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
+  console.log(timeTaken);
   
   // show result modal
   resultModal.innerHTML = "";
@@ -95,32 +99,47 @@ const gameOver = () => {
   display.classList.add("inactive");
 };
 
+
+
 const closeModal = () => {
   modalBackground.classList.toggle("hidden");
   resultModal.classList.toggle("hidden");
 };
 
+ 
+
+
 const start = () => {
   // If already started, do not start again
-  if (startTime) return;
+  if (startTime){ 
+    return;
   
+  }
+  
+
   let count = 3;
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = '<h1>${count}</h1>';
+     countdownOverlay.innerHTML=`<h1>${count}</h1>`
+    
+    
+    // innerHTML = '<h1>${count}</h1>';
 
+    
+   
     
 
     // finished timer
     if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
+
     }
     count--;
   }, 1000);
