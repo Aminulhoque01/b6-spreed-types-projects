@@ -8,7 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 
 // variables
 let userText = "";
-let errorCount = 0;
+let errorCount=0;
 let startTime;
 let questionText = "";
 
@@ -49,14 +49,23 @@ const typeController = (e) => {
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
-    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+   display.innerHTML += `<span  class="red">${newLetter === "" ? "▪" : newLetter},${errorCount++}</span>`;
+    
   }
+  // console.log(mistak.innetext)
+    // var mistak=
+    // maistk.innText += errorCount;
+  // const wrongL=document.getElementById('mistak');
+  // const wrongLetter=wrongL.innnerText;
+  
 
+  
   // check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
   }
 };
+
 
 const validate = (key) => {
   if (key === questionText[userText.length - 1]) {
@@ -72,12 +81,13 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
-  console.log(timeTaken);
+  const timePar=parseInt(timeTaken)
   
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
+  
   // clear user text
   display.innerHTML = "";
   // make it inactive
@@ -85,17 +95,18 @@ const gameOver = () => {
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
-    <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+    <p>You took: <span class="bold">${timePar}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timePar, errorCount);
+  // console.log(errorCount);
 
   // restart everything
-  startTime = null;
-  errorCount = 0;
-  userText = "";
+    startTime = null;
+    errorCount = 0;
+    userText = "";
   display.classList.add("inactive");
 };
 
@@ -111,13 +122,14 @@ const closeModal = () => {
 
 const start = () => {
   // If already started, do not start again
-  if (startTime){ 
+  if (startTime)
     return;
   
-  }
+  
   
 
   let count = 3;
+  
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
@@ -149,7 +161,8 @@ const start = () => {
 startBtn.addEventListener("click", start);
 
 // If history exists, show it
-displayHistory();
+
+
 
 // Show typing time spent
 setInterval(() => {

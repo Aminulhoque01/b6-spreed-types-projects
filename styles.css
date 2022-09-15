@@ -63,8 +63,8 @@ body {
 }
 #result {
   position: fixed;
-  top: 10%; 
-  left: 10%;
+  top: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   height: 250px;
   width: 400px;
@@ -74,6 +74,7 @@ body {
   color: white;
   text-align: center;
   padding: 2rem;
+  
 }
 #show-time{
   text-align: center;
@@ -142,10 +143,24 @@ button {
 }
 
 #histories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+};
+#histories p{
+  /* text-align: center; */
+  padding-left:10px;
+ 
+  
 }
+#histories h3{
+  padding-right:5px;
+  
+}
+#histories h4{
+  padding-left: 20px;
+}
+
 
 .card {
   width: 100%;
@@ -178,7 +193,8 @@ button {
   height: 100vh;
   width: 100%;
   position: fixed;
-  top: 0;
+  top:0px;
+  
 }
 
 @media only screen and (max-width: 700px) {
@@ -188,5 +204,11 @@ button {
   }
   .card {
     flex-direction: column;
+  }
+
+  #histories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
