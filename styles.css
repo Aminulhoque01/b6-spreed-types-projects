@@ -211,4 +211,18 @@ button {
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
+  #histories p{
+    /* text-align: center; */
+    padding-left:0px;
+   
+    
+  }
+  #histories h3{
+    padding-right:0px;
+    
+  }
+  #histories h4{
+    padding-left: 0px;
+  }
 }
