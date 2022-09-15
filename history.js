@@ -1,6 +1,6 @@
 const histories = document.getElementById("histories");
 
-displayHistory();
+
 
 function addHistory(questionText, timeTaken, errorCount) {
   // console.log(questionText,timeTaken,errorCount);
@@ -21,7 +21,7 @@ function addHistory(questionText, timeTaken, errorCount) {
   // console.log(previousTests)
   previousTests.push({ questionText, timeTaken, errorCount });
   localStorage.setItem("testHistory", JSON.stringify(previousTests));
-  
+  displayHistory();
   
 }
 

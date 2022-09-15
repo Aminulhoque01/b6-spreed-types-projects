@@ -49,14 +49,9 @@ const typeController = (e) => {
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
-   display.innerHTML += `<span  class="red">${newLetter === "" ? "▪" : newLetter},${errorCount++}</span>`;
+   display.innerHTML += `<span  class="red">${newLetter === "" ? "▪" : newLetter}</span>`, errorCount++;
     
   }
-  // console.log(mistak.innetext)
-    // var mistak=
-    // maistk.innText += errorCount;
-  // const wrongL=document.getElementById('mistak');
-  // const wrongLetter=wrongL.innnerText;
   
 
   
