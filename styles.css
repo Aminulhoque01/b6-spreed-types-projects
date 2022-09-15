@@ -1,3 +1,23 @@
+/* blog section start from here  */
+.header {
+  margin-top: 50px;
+  margin-left: 90%;
+}
+
+.link-added {
+  color: #9dffad;
+  font-size: larger;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 40px;
+  border: 3px solid #9dffad;
+  border-radius: 15px;
+
+}
+.link-added:hover {
+  background-color: greenyellow;
+  color:red;
+}
 * {
   padding: 0;
   margin: 0;
